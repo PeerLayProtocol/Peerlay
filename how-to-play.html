@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="favicons/favicon.png">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerLay Game Rules</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    p {
+      margin: 10px 0;
+    }
+    table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+  }
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 1.2em;
+    }
+    .example {
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+      margin: 20px 0;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <a href="index.html" class="back-button">Back to Main Page</a>
+  </div>
+  <div class="container">
+    <h1>PeerLay Game Rules</h1>
+
+    <h2>Overview</h2>
+    <p>PeerLay is a prediction game protocol built to prioritize user competition, fair rewards, and transparent gameplay. 
+      It allows players to compete directly against each other without intermediaries, rewarding the overall performance of the player with respect to their peers, instead of rewarding perfect predictions only.
+      The protocol operates exclusively on the Polygon network and uses USDC as the token for predictions.</p>
+
+    <h2>Game Structure</h2>
+    <p>PeerLay is structured into weekly games. Each game features a unique set of events, with 3 to 6 events per game and 2 to 4 possible outcomes for each event</p>
+    <p>Games are divided into two distinct phases, with each phase lasting one week.</p>
+    <ol>
+      <li><strong>Prediction Phase</strong> 
+        <p>During this phase, lasting one week, players can participate by casting their predictions on the events of the weekly game. 
+        For each event, players can select up to one option less than the total available choices (i.e., selecting all options for an event is not allowed). 
+        Players may also opt to skip an event entirely.
+        Players are free to withdraw any prediction they have placed for the current game throughout the entire Prediction Phase.</p>
+      </li>
+      <li><strong>Results Phase</strong> 
+        <p>In the following week, the events unfold, and the outcomes are finalized. Two days after the end of the second week, players will be able to withdraw their rewards. The rewards will be calculated according to multipliers representing the choices made by players as a group.</p>
+       </li>
+    </ol>
+    <div class="example">
+      <p><strong>Example:</strong></p>
+      <p>Consider a game with 4 total events the following setup:</p>
+      <p>Event 1 has 4 options, Event 2 has 3 options, and Events 3 and 4 have 2 options each.</p>
+      <p><strong>Multipliers Calculation:</strong></p>
+      <p>If a player casts 10 USDC and selects Options 1 and 3 for the first event, Option 2 for the second event, skips the third event and selects Option 1 for the last event, the frequency will update as follows:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th colspan="4">Options' Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Event 1</td>
+            <td>+10</td>
+            <td>0</td>
+            <td>+10</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Event 2</td>
+            <td>0</td>
+            <td>+10</td>
+            <td>0</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Event 3</td>
+            <td>0</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Event 4</td>
+            <td>+10</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+        <p>Let us assume that at the end of the <strong>Prediction Phase</strong>, the situation is as follows:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th colspan="4">Options' Frequency</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Event 1</td>
+              <td>20</td>
+              <td>5</td>
+              <td>10</td>
+              <td>5</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Event 2</td>
+              <td>5</td>
+              <td>20</td>
+              <td>15</td>
+              <td></td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Event 3</td>
+              <td>10</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>Event 4</td>
+              <td>10</td>
+              <td>20</td>
+              <td></td>
+              <td></td>
+              <td>30</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The <strong>Multipliers</strong>, which are only defined at the end of the prediction phase, will be defined as follows:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th colspan="4">Multipliers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Event 1</td>
+              <td>20 / 40 = 0.50</td>
+              <td>5 / 40 = 0.125</td>
+              <td>10 / 40 = 0.25</td>
+              <td>5 / 40 = 0.125</td>
+            </tr>
+            <tr>
+              <td>Event 2</td>
+              <td>5 / 40 = 0.125</td>
+              <td>20 / 40 = 0.50</td>
+              <td>15 / 40 = 0.375</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Event 3</td>
+              <td>10 / 20 = 0.50</td>
+              <td>10 / 20 = 0.50</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Event 4</td>
+              <td>10 / 30 = 0.33</td>
+              <td>20 / 30 = 0.66</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <h2>Reward Calculation</h2>
+    <p>Rewards are determined by the player's Final Score. The following formula is applied:</p>
+    <p><code>Reward = (Final Score × Total Prize) / Sum of Final Scores from All Players</code></p>
+
+    <h3>Key Steps in Reward Calculation</h3>
+    <ul style="margin-bottom: 15px;">
+      <li style="margin-bottom: 10px;"><strong>Multipliers:</strong> The multipliers for each event are calculated based on the frequency of selection for each available option across all players.
+      </li>
+      <li style="margin-bottom: 10px;"><strong>Prediction Score Computation:</strong> Each prediction's starting score is determined by the number of USDC cast. For each event the partial score is updated based on the selected options and their associated multipliers. 
+        If a player decides to skip an event their partial score will not be affected by that event. After all events are processed, the Final Score is obtained.
+      </li>
+      <li style="margin-bottom: 10px;"><strong>Correct Selection:</strong> If a player selects the correct outcome for an event, their partial score is divided (thereby increasing it) by the sum of the multipliers of the options they selected. 
+      </li>
+      <li><strong>Incorrect Selection:</strong> If the player's selected options do not include the correct outcome, their partial score is multiplied (thereby decreasing it) by the sum of the multipliers of the unselected options.
+      </li>
+    </ul>
+
+    <div class="example">
+      <p><strong>Final Score Calculation:</strong></p>
+      <p>Using the multipliers and prediction from the previous example, let us assume that the Option 1 turned out to be correct for all the events. The Player, casting 10 USDC, made the following choices:</p>
+      <ul>
+        <li>Event 1: Option 1 and Option 3</li>
+        <li>Event 2: Option 2</li>
+        <li>Event 3: Skip</li>
+        <li>Event 4: Option 1</li>
+      </ul>
+      <p>Using the multipliers from the past table, the prediction will have a <strong>Final Score </strong>of 20. The steps to obtain the Final Score for this example are the following:</p>
+      <ul>
+        <li>Starting score: <strong>10</strong></li>
+        <li>Event 1 (Correct): 10 / (0.5 + 0.25) = <strong>13,33</strong> (The partial score is divided by the sum of the multipliers of the selected options since the correct outcome was selected)</li>
+        <li>Event 2 (Wrong): 13,33 × (0.125 + 0.375) = <strong>6.67</strong> (The partial score is multiplied by the sum of the multipliers of the not selected options since the correct outcome was not selected)</li>
+        <li>Event 3 (Skipped): No change = <strong>6.67</strong> (The event was skipped by the player. no effect on the score)</li>
+        <li>Event 4 (Correct): 6.67 / 0.33 = <strong>20</strong> (The partial score is divided by the multiplier of the selected option, since the correct outcome was selected)</li>
+      </ul>
+    <p><strong>Reward Calculation:</strong></p>
+    <p>To calculate Player A's Reward, consider a scenario where four other players each cast 10 USDC making the total prize equal to 50 USDCs, with their combined Final Scores totaling 80. In this case, the player's total Reward would amount to <strong>12.25 USDC.</strong></p>
+    <p><code>Reward = (20 × 50) / 80 = 12.25 USDC</code></p>
+  </div>
+  </div>
+</body>
+</html>

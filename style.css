@@ -1,0 +1,633 @@
+/* Common Styles for All Pages */
+@import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+:root {
+    /* Updated color scheme */
+    --c1: #0a2243;
+    --c2: #edddc3; 
+    --c3: #0000; 
+    --c7: #f3f7f0; /* Text*/
+    --c10: #2a8f9a;
+    --c11: #06858c; /* See more link */
+    --c13: #18567a; /* Vote container*/
+    --c15: #073b31; /* Backgorund 2 */
+    --s: 5px;    /* Background pattern size */
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: rgba(2, 43, 58, 0.8);
+    border-bottom: 2px solid var(--c2);
+}
+
+header .navbar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .nav-logo .logo-text{
+    color: var(--c7);
+    font-size: 30px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-menu {
+    display: flex;
+    align-items: center; /* Vertically center links */
+    justify-content: center; /* Horizontally center links */
+    gap: 15px; /* Adjust spacing between items */
+}
+
+.navbar .nav-menu .nav-link{
+    padding: 10px 4px;
+    color: var(--c7);
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+    text-decoration: underline;
+    color: var(--c7);
+    background: var(--c13);
+}
+
+.navbar :where(#menu-close-button, #menu-open-button) {
+    display: none;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    width: 60px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 5px; /* Add some spacing between the logo and the text */
+}
+
+.menu-icon{
+    width: 15px;
+    height: 15px;
+}
+
+.wallet-icon {
+    flex-shrink: 0;
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+}
+
+.header-icons {
+    display: flex; /* Arrange icons in a row */
+    gap: 15px; /* Add spacing between the icons */
+    justify-content: flex-end; /* Align icons to the right */
+    width: 100%; /* Ensure the icons span the entire header space */
+}
+
+.header-icon {
+    width: 30px; /* Set a consistent size */
+    height: 30px;
+}
+
+.wallet-button {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 12px;
+    font-size: 1rem;
+    background-color: var(--c11); /* Button background color */
+    color: #fff;
+    border-radius: 20px;
+    max-width: 250px;
+    max-height: 50px;
+    overflow: hidden; /* Hide overflow */
+    cursor: pointer;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    margin-left: 18px;
+}
+
+body.show-mobile-menu .navbar .nav-menu{
+    left: 0
+}
+
+body {
+    background: linear-gradient(135deg, #060606, #011c1b);
+    filter: contrast(150%) brightness(90%);
+    font-size: 1.1em;
+    color: var(--c7);
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('favicons/noise.png');
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    opacity: 0.16;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: var(--c3);
+    color: var(--c7);
+    border-color: var(--c7);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 10px 2px; /* Added 15px for left and right margins */
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+button:hover {
+    filter: brightness(1.2); /* Slightly increase brightness on hover */
+    transform: scale(1.03); /* Slight zoom on hover */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+button.active {
+    background-color: var(--c13);
+    color: var(--c7);
+    border-bottom: 3px solid var(--c2); 
+}
+
+.skip-option {
+    grid-column: span 2; /* Makes it take up one row across two columns */
+    justify-self: end; /* Align it to the right */
+    background-color: var(--c3);
+    border: 2px solid var(--c7); 
+    border-radius: 12px;
+    max-height: 4em; /* Smaller height than other options */
+    padding: 6px 12px; /* Reduced padding */
+    font-weight: bold; /* Make the text stand out */
+    cursor: pointer; /* Keeps the pointer behavior consistent */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px; /* Add spacing between rows */
+    background-color: var(--c3);
+    color: var(--c7);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    border-radius: 40px 40px 0 0; /* Rounded top corners */
+}
+
+table, th, td {
+    border: none; /* Remove default borders */
+    padding: 6px;
+    text-align: center;
+}
+
+/* Styling for table headers */
+table th {
+    background-color: rgba(18, 137, 173, 0.247);
+    color: var(--c7); /* Text color for header */
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+/* Styling for table cells with left and right borders */
+table td {
+    max-width: 500px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    background-color: rgba(22, 127, 192, 0.2);
+    text-align: center;
+}
+
+/* Alternate row coloring */
+table tr:nth-child(even) td {
+    background-color: rgba(11, 88, 136, 0.2);
+}
+
+/* Enhanced outcomes-cell styling */
+.outcomes-cell {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.outcomes-cell.three-options .outcome-option:nth-child(4){
+    grid-column: 1 / span 2; /* Center the third item across two columns */
+    justify-self: center; /* Ensure it's centered horizontally */
+    text-align: center; /* Center text inside */
+    width: 43%; /* Same width as other items */
+}
+
+/* Outcome option styling */
+.outcome-option {
+    max-height: 6em;
+    overflow-y: auto;
+    padding: 9px;
+    border: 1px solid var(--c7); 
+    border-radius: 8px;
+    background-color: rgba(3, 47, 60, 0.3);
+    color: var(--c7);
+    font-size: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-items: center;
+    gap: 8px;
+}
+
+.outcome-option:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for selected options */
+.selected {
+    background-color: var(--c10);
+    color: var(--c7);
+    border: 1px solid var(--c2);
+    font-weight: 600;
+}
+
+.right {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Styling for collapsible items */
+.collapsible {
+    max-height: 12em;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/* Expanded state for collapsible */
+.collapsible.expand {
+    max-height: none;
+    overflow-y: auto;
+}
+
+/* Styling for "See more" link */
+.see-more-link {
+    display: block;
+    margin-top: 8px;
+    color: var(--c11); /* Aqua color for the link */
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.see-more-link:hover {
+    color: var(--c11);
+    text-decoration: underline;
+}
+
+.see-more-link:focus {
+    outline-offset: 2px;
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: var(--c15);
+    margin: 5% auto;             /* Reduce margin for more height */
+    padding: 20px;
+    border: 1px solid var(--c2);
+    width: 90%;                  /* Increase the base width */
+    max-width: 800px;            /* Increase max width */
+    max-height: 90vh;            /* Increase max height to fill more of the viewport */
+    overflow-y: auto;            /* Enable vertical scrolling */
+    overflow-x: hidden;          /* Prevent horizontal overflow */
+    box-sizing: border-box;
+    border-radius:20px;
+}
+
+.modal-content td {
+    /* Ensure inner elements wrap text properly */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;       /* Keeps text within modal boundaries */
+    white-space: normal;    /* Allows text to wrap */
+}
+
+.modal-content table {
+    width: 100%;          /* Ensures table fits within modal width */
+    table-layout: fixed;   /* Forces columns to fit within the table width */
+}
+
+.modal-content th, .modal-content td {
+    word-wrap: break-word;   /* Ensures long words wrap within table cells */
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.close-btn {
+    color: var(--c7);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab-nav {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Default hidden state for overflowed text */
+.outcome-option .extra-text {
+    display: none; /* Hide extra text initially */
+}
+
+/* Expanded state to show all text */
+.outcome-option.expand .extra-text {
+    display: inline; /* Show extra text when expanded */
+}
+
+input[type="text"] {
+    width: 100%;                  /* Full width within container */
+    max-width: 300px;             /* Optional max width for smaller forms */
+    padding: 12px 16px;           /* Comfortable padding for text input */
+    font-size: 1em;               /* Base font size */
+    color: #022b3a;               /* Dark text color for readability */
+    background-color: #f3f7f0;    /* Light sand color for a soft background */
+    border: 1px solid var(--c2);    /* Seafoam green border for subtle contrast */
+    border-radius: 8px;           /* Rounded corners for a modern look */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    outline: none;                /* Removes default outline */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;          /* Center the container and add spacing */
+    padding: 20px;              /* Add internal padding */
+    border-radius: 8px;         /* Rounded corners for a modern look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-sizing: border-box;
+    padding-bottom: 50px;
+}
+
+/* Toggle container */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer; /* Makes the toggle interactive */
+}
+
+/* Hide the default checkbox */
+.toggle-container input[type="checkbox"] {
+    opacity: 0; /* Make the checkbox invisible */
+    position: absolute; /* Remove it from the normal layout */
+    width: 0;
+    height: 0;
+}
+
+/* Slider */
+.slider {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-color: #bdbdbd; /* Default grey background */
+    border-radius: 12px; /* Half height for a rounded shape */
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Knob inside the slider */
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%; /* Circular knob */
+    transition: transform 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for the knob */
+}
+
+.prediction-checkbox {
+    height: 20px;
+    width: 20px;
+}
+
+/* When the checkbox is checked */
+.toggle-container input:checked + .slider {
+    background-color: var(--c11); /* Vibrant purple for active state */
+}
+
+.toggle-container input:checked + .slider:before {
+    transform: translateX(24px); /* Move knob to the right */
+}
+
+/* Text next to the slider */
+.toggle-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #eaeaea; /* Light text color */
+}
+
+.game-info {
+    display: flex; /* Create a horizontal layout for child elements */
+    justify-content: space-between; /* Push left and right sections apart */
+    align-items: center; /* Vertically center items */
+    padding: 10px 20px; /* Add some padding for spacing */
+}
+
+.left-info {
+    flex: 1; /* Allow the left section to take up available space */
+}
+
+.right-info {
+    text-align: right; /* Align text to the right */
+    display: flex; /* Use flex for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-end; /* Align items to the right */
+    gap: 10px; /* Add space between the time display and toggle */
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+.game-navigation {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;    /* Center the content vertically (optional, for aesthetics) */
+    gap: 10px;              /* Add space between the buttons and the label */
+    margin: 20px 0;         /* Add spacing around the navigation section */
+    font-size: 24px;
+}
+
+.auto-width {
+    width: fit-content; /* Automatically adjusts to fit the content */
+    max-width: 90%; /* Optional: Prevents the element from growing too large */
+}
+
+/* Basic Modal Styling */
+.custom-alert {
+    display: none; /* Hidden by default */
+    margin-top: 120px;
+    position: absolute; /* Positioned relative to the document */
+    z-index: 1000; /* Ensure it's above everything */
+    width: 100%; /* Takes full width of the container for positioning */
+    pointer-events: none; /* Prevent interaction outside content */
+}
+
+.custom-alert-content {
+    background-color: var(--c1);
+    margin: auto;
+    padding: 10px;
+    border: 1px solid var(--c10);
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    pointer-events: all;
+    position: relative;
+}
+
+.footer-text p {
+    margin: 10px 0; /* Space between paragraphs */
+    font-size: 14px;
+}
+
+@media screen and (max-width: 950px) {
+    .navbar :where(#menu-close-button, #menu-open-button) {
+        display: block;
+        font-size: 18px;
+    }
+
+    .navbar #menu-close-button{
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+
+    .navbar .nav-menu {
+        display: block;
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        background: var(--c1);
+        transition: left 0.2 ease;
+        z-index: 1000;
+        justify-content: flex-start;
+    }
+
+    .navbar .nav-menu .nav-link{
+        font-size: 16px;
+        display: block;
+        margin-top: 17px;
+    }
+
+    .outcomes-cell {
+        display: block; /* Change display to block for mobile */
+        gap: 8px; /* Adjust gap to a smaller value if needed */
+    }
+
+    .outcomes-cell.three-options .outcome-option:nth-child(4) {
+        grid-column: unset; /* Remove grid positioning */
+        justify-self: unset; /* Reset horizontal alignment */
+        width: auto; /* Reset the width to fit content */
+    }
+
+    .header-icons {
+        justify-content:center
+    }
+
+    .left-info, .right-info {
+        flex: none; /* Reset flex property */
+        width: 60%;
+        text-align: left; /* Optional: Align text to the left for both */
+    }
+
+    .right-info {
+        align-items: flex-start; /* Align items to the left */
+        width: 40%;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    .outcome-option {
+        font-size: 12px;
+    }
+
+    .footer-text p {
+        font-size: 9px;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+}

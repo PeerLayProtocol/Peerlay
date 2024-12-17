@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerLay</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicons/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" integrity="sha384-Htz1SE4Sl5aitpvFgr2j0sfsGUIuSXI6t8hEyrlQ93zflEF3a29bH2AvkUROUw7J" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js" integrity="sha384-Tsl3d5pUAO7a13enIvSsL3O0/95nsthPJiPto5NtLuY8w3+LbZOpr3Fl2MNmrh1E" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class ="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="favicons/PeerLay-logo.png" alt="PeerLay Logo" class="logo-image">
+                <h2 class="logo-text"> PeerLay</h2>
+            </a>
+            <ul class ="nav-menu">
+                <button id="menu-close-button" class="menu-close-button">
+                    <img src="favicons/menu-close.png" alt="Close Menu" class="menu-icon">
+                </button>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Play
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pastGames.html" class="nav-link">
+                        Past Games
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="how-to-play.html" class="nav-link">
+                        Game Rules
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link">
+                        Account
+                    </a>
+                </li>
+                <li style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <div class="header-icons">
+                        <a href="https://twitter.com/home">
+                            <img src="favicons/x-icon.png" alt="Twitter Icon" class="header-icon">
+                        </a>
+                        <a href="https://github.com/">
+                            <img src="favicons/github-icon.png" alt="GitHub Icon" class="header-icon">
+                        </a>
+                        <a href="https://polygonscan.com/">
+                            <img src="favicons/polygon-icon.png" alt="Polygon Icon" class="header-icon">
+                        </a>
+                    </div>
+                    <button id="connectWallet" class="wallet-button">
+                        <img src="favicons/wallet-icon.png" alt="Wallet Icon" class="wallet-icon">
+                        Connect Wallet
+                    </button>
+                </li>                
+            </ul>
+            <button id="menu-open-button" class="menu-open-button">
+                <img src="favicons/menu-open.png" alt="Close Menu" class="menu-icon">
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content with Flex Container -->
+    <div class="main-container">
+        <!-- User Predictions Section -->
+        <div class="user-data">
+            <!-- Tab Navigation for Predictions -->
+            <div class="tab-nav">
+                <button class="button active" onclick="showTab('AllPredictions')">All Predictions</button>
+                <button class="button" onclick="showTab('currentPredictions')">Current</button>
+                <button class="button" onclick="showTab('redeemablePredictions')">Redeemable</button>
+            </div>
+            <!-- Pagination Controls for Predictions -->
+            <div id="paginationControls" class="pagination">
+                <button id="prevButton" onclick="previousPage()">Previous</button>
+                <span>Page <span id="pageNumber">1</span> of <span id="totalPages">1</span></span>
+                <button id="nextButton" onclick="nextPage()">Next</button>
+            </div>
+
+            <!-- Consolidated Table for Predictions -->
+            <div>
+                <table id="predictionsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Game</th>
+                            <th>Amount</th>
+                            <th>Details</th>
+                            <th>Prize</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <div class="right-info" id="loadingIndicator" style="display: none;">
+                            <p>Loading...</p>
+                        </div>
+                    </tbody>
+                </table>
+                <div class="game-info">
+                <div class="left-info">
+                    <button onclick="redeemAllPredictions()" class="redeem-all-button">Redeem All</button>
+                </div>
+                <div class="right-info">
+                    <button onclick="redeemSelectedPredictions()" class="redeem-button">Redeem Selected</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-text">
+        <p>
+            This website serves as an interface for interacting with PeerLay's decentralized protocol. Participation involves risks, and outcomes are not guaranteed. Users are responsible for complying with their local laws before participating.
+        </p>
+        <p>
+            The website does not directly store personal data. However, third-party service providers may collect and process technical data, including IP addresses, as part of their operations.
+        </p>
+        <p>
+            For inquiries, contact us at <a href="mailto:contact@peerlay.com">contact@peerlay.com</a>.
+        </p>
+    </div>
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <h3 id="alertMessage">This is a custom alert</h3>
+        </div>
+    </div>
+
+    <!-- Popup Modal Structure -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p id="modalTypeText"></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody id="eventDetailsBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include external JS scripts -->
+    <script src="common_script.js"></script>
+    <script src="account_script.js"></script>
+</body>
+</html>
